@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300;500&display=swap');
+:root {
+  --dark-gray: hsl(0, 0%, 63%);
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  --very-dark-gray: hsl(0, 0%, 27%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Spartan', sans-serif;
+  height: 100vh;
+  background-color: var(--white);
+}
+
+p {
+  font-size: 12px;
+  color: var(--dark-gray);
+  font-weight: 400;
+  line-height: 170%;
+}
+
+/******* navbar *******/
+
+.navbar {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  padding: 60px 30px;
+  justify-content: space-between;
+}
+
+.nav-link-container {
+  display: none;
+}
+
+.nav-logo {
+  justify-self: center;
+}
+
+.display-none {
+  display: none;
+}
+/******** carousel ********/
+
+.carousel-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-img-container {
+  width: 100vw;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: end;
+}
+
+.carousel-buttons-container {
+  width: 100px;
+  height: 50px;
+  align-self: flex-end;
+  display: flex;
+}
+
+.carousel-buttons {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background-color: var(--black);
+}
+
+.carousel-buttons:hover {
+  background-color: var(--very-dark-gray);
+  cursor: pointer;
+}
+
+.hero-text-container {
+  padding: 30px 25px;
+}
+
+.shop-now-button {
+  margin: 40px 0px;
+  letter-spacing: 7px;
+}
+
+.shop-now-arrow-container {
+  margin-left: 30px;
+}
+
+.shop-now-button:hover,
+.shop-now-button:hover .shop-now-arrow {
+  cursor: pointer;
+  color: var(--dark-gray);
+  fill: var(--dark-gray);
+}
+
+/******* about *******/
+
+.about-section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-img {
+  width: 100vw;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-header {
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 0px;
+}
+
+.about-text-container {
+  padding: 40px 25px;
+}
+
+/******* footer *******/
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* responsive after screen width greater than 375px */
+@media only screen and (min-width: 376px) {
+  .nav-menu-burger {
+    display: none;
+  }
+}
