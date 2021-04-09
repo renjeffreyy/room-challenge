@@ -25,29 +25,77 @@ p {
   line-height: 170%;
 }
 
+/******* helper Styles *******/
+.position-relative {
+  position: relative;
+}
+
+.display-none {
+  display: none;
+}
 /******* navbar *******/
 
 .navbar {
-  overflow: hidden;
   position: absolute;
   top: 0;
   width: 100vw;
+  z-index: 3;
+}
+
+.nav-container {
   display: flex;
-  padding: 60px 30px;
+  padding: 50px 30px;
   justify-content: space-between;
+}
+
+.nav-container.active {
+  background-color: var(--white);
 }
 
 .nav-link-container {
   display: none;
+  top: 0;
+  list-style: none;
+  margin: 0;
+}
+.nav-link-container.active {
+  display: flex;
+  justify-self: center;
+  position: relative;
+}
+
+.nav-links {
+  font-weight: 600;
+  font-size: 13px;
+  margin: 0 10px;
+}
+.nav-links:hover {
+  cursor: pointer;
+}
+
+.nav-links:hover::before {
+  content: '';
+  background-color: var(--black);
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
 }
 
 .nav-logo {
   justify-self: center;
 }
 
-.display-none {
-  display: none;
+.nav-overlay.active {
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
 }
+
 /******** carousel ********/
 
 .carousel-container {
@@ -56,14 +104,42 @@ p {
   flex-direction: column;
 }
 
+.carousel-buttons-container.desktop {
+  display: none;
+}
+
 .hero-img-container {
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: end;
+}
+
+.hero-img {
+  position: absolute;
+  z-index: -1;
   width: 100vw;
   height: 400px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  display: flex;
-  justify-content: end;
+  display: none;
+}
+
+.hero-img.active {
+  display: block;
+}
+
+.img-1 {
+  background-image: url('./images/mobile-image-hero-1.jpg');
+}
+
+.img-2 {
+  background-image: url('./images/mobile-image-hero-2.jpg');
+}
+
+.img-3 {
+  background-image: url('./images/mobile-image-hero-3.jpg');
 }
 
 .carousel-buttons-container {
@@ -71,6 +147,7 @@ p {
   height: 50px;
   align-self: flex-end;
   display: flex;
+  position: absolute;
 }
 
 .carousel-buttons {
@@ -86,13 +163,25 @@ p {
   cursor: pointer;
 }
 
-.hero-text-container {
+.hero-description-container {
   padding: 30px 25px;
+  min-height: 377.767px;
+}
+
+.hero-text {
+  display: none;
+}
+
+.hero-text.active {
+  display: block;
 }
 
 .shop-now-button {
   margin: 40px 0px;
   letter-spacing: 7px;
+  font-size: 12px;
+  position: absolute;
+  bottom: 50px;
 }
 
 .shop-now-arrow-container {
@@ -131,18 +220,170 @@ p {
   padding: 40px 25px;
 }
 
-/******* footer *******/
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
 /* responsive after screen width greater than 375px */
 @media only screen and (min-width: 376px) {
-  .nav-menu-burger {
+  /******* Nav *******/
+  .nav-menu-icon-container {
     display: none;
+  }
+
+  .nav-container {
+    justify-content: start;
+    padding-right: 0px;
+  }
+  .nav-logo {
+    margin: 0 0 0 20px;
+  }
+
+  .nav-link-container {
+    display: flex;
+  }
+
+  .nav-links {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .nav-links:hover::before {
+    background-color: var(--white);
+  }
+
+  /******* courasel *******/
+  .carousel-container {
+    flex-direction: row;
+    height: 534px;
+    max-width: 1440px;
+  }
+
+  .carousel-buttons-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 160px;
+    height: 80px;
+  }
+
+  .carousel-buttons-container.mobile {
+    display: none;
+  }
+
+  .carousel-buttons-container.desktop {
+    display: flex;
+  }
+
+  .hero-img-container {
+    height: 100%;
+
+    min-width: 840px;
+    max-width: 840px;
+  }
+
+  .hero-img {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-description-container {
+    flex-basis: 600px;
+    padding: 100px;
+    position: relative;
+    min-width: 600px;
+    max-width: 600px;
+  }
+
+  .shop-now-button {
+    position: static;
+  }
+
+  .img-1 {
+    background-image: url('./images/desktop-image-hero-1.jpg');
+  }
+
+  .img-2 {
+    background-image: url('./images/desktop-image-hero-2.jpg');
+  }
+
+  .img-3 {
+    background-image: url('./images/desktop-image-hero-3.jpg');
+  }
+
+  .hero-header {
+    font-size: 35px;
+  }
+
+  /******* about section ********/
+  .about-section-container {
+    flex-direction: row;
+    min-height: 267px;
+  }
+
+  .about-text-container {
+    padding: 50px 40px;
+    flex-basis: 120%;
+    min-width: 580px;
+    max-width: 580px;
+  }
+
+  .about-img {
+    min-width: 420px;
+    max-width: 420px;
+
+    height: 265px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .about-img-light {
+    max-width: 440px;
+  }
+}
+
+/* responsive after screen width greater than 1440px */
+@media only screen and (min-width: 1441px) {
+  body {
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+  }
+
+  /******* navbar *******/
+
+  .navbar {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 3;
+  }
+}
+
+/* responsive after screen height greater than 800px */
+@media only screen and (min-height: 901px) {
+  body {
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    position: relative;
+  }
+
+  /******* navbar *******/
+  .navbar {
+    background-color: black;
+    position: absolute;
+    min-width: 1440px;
+    width: 100%;
+    top: 0;
+    z-index: 3;
   }
 }
