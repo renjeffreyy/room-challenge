@@ -6,9 +6,6 @@
   --very-dark-gray: hsl(0, 0%, 27%);
 }
 
-* {
-  box-sizing: border-box;
-}
 html {
   margin: 0;
 }
@@ -446,4 +443,8 @@ p {
   .about-text-container {
     padding: 50px 100px;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
