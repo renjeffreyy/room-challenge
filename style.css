@@ -44,8 +44,10 @@ p {
 
 .nav-container {
   display: flex;
+  display: -webkit-flex;
   padding: 50px 30px;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
 }
 
 .nav-container.active {
@@ -60,7 +62,9 @@ p {
 }
 .nav-link-container.active {
   display: flex;
+  display: -webkit-flex;
   justify-self: center;
+  -webkit-justify-self: center;
   position: relative;
 }
 
@@ -85,6 +89,7 @@ p {
 
 .nav-logo {
   justify-self: center;
+  -webkit-justify-self: center;
 }
 
 .nav-overlay.active {
@@ -101,7 +106,9 @@ p {
 .carousel-container {
   width: 100vw;
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .carousel-buttons-container.desktop {
@@ -112,7 +119,10 @@ p {
   width: 100vw;
   height: 400px;
   display: flex;
+  display: -webkit-flex;
   justify-content: end;
+  -webkit-justify-content: end;
+  position: relative;
 }
 
 .hero-img {
@@ -146,8 +156,13 @@ p {
   width: 100px;
   height: 50px;
   align-self: flex-end;
+  justify-self: end;
+  -webkit-align-self: end;
   display: flex;
+  display: -webkit-flex;
   position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .carousel-buttons {
@@ -177,15 +192,19 @@ p {
 }
 
 .shop-now-button {
-  margin: 40px 0px;
+  margin: 30px 0px;
   letter-spacing: 7px;
   font-size: 12px;
-  position: absolute;
-  bottom: 50px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  height: 50px;
 }
 
-.shop-now-arrow-container {
-  margin-left: 30px;
+.shop-now-arrow {
+  width: 100px;
+  height: 100px;
 }
 
 .shop-now-button:hover,
@@ -199,7 +218,9 @@ p {
 
 .about-section-container {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .about-img {
@@ -220,84 +241,29 @@ p {
   padding: 40px 25px;
 }
 
-/* responsive after screen width greater than 375px */
+/* media queries for  width 376 - 768 */
+
 @media only screen and (min-width: 376px) {
-  /******* Nav *******/
-  .nav-menu-icon-container {
-    display: none;
+  p {
+    font-size: 12px;
   }
 
-  .nav-container {
+  .nav-container.active {
     justify-content: start;
-    padding-right: 0px;
-  }
-  .nav-logo {
-    margin: 0 0 0 20px;
-  }
-
-  .nav-link-container {
-    display: flex;
-  }
-
-  .nav-links {
-    color: var(--white);
-    font-weight: 500;
-  }
-
-  .nav-links:hover::before {
-    background-color: var(--white);
-  }
-
-  /******* courasel *******/
-  .carousel-container {
-    flex-direction: row;
-    height: 534px;
-    max-width: 1440px;
-  }
-
-  .carousel-buttons-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 160px;
-    height: 80px;
-  }
-
-  .carousel-buttons-container.mobile {
-    display: none;
-  }
-
-  .carousel-buttons-container.desktop {
-    display: flex;
+    -webkit-justify-content: start;
   }
 
   .hero-img-container {
-    height: 100%;
-
-    min-width: 840px;
-    max-width: 840px;
-  }
-
-  .hero-img {
-    position: relative;
-    display: none;
     width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
   }
 
   .hero-description-container {
-    flex-basis: 600px;
     padding: 100px;
-    position: relative;
-    min-width: 600px;
-    max-width: 600px;
   }
 
   .shop-now-button {
     position: static;
+    font-size: 18px;
   }
 
   .img-1 {
@@ -312,78 +278,169 @@ p {
     background-image: url('./images/desktop-image-hero-3.jpg');
   }
 
+  .carousel-buttons-container {
+    width: 100px;
+    height: 50px;
+    justify-self: start;
+    -webkit-justify-self: start;
+  }
+
+  .about-header {
+    font-size: 24px;
+  }
+
+  .about-text-container {
+    padding: 100px;
+    flex-basis: 120%;
+    -webkit-flex-basis: 120%;
+  }
+}
+
+/* responsive after screen width 768px - 1440px */
+@media only screen and (min-width: 769px) {
+  /******* Nav *******/
+  .nav-menu-icon-container {
+    display: none;
+  }
+
+  .nav-container {
+    justify-content: start;
+    -webkit-justify-content: start;
+    padding-right: 0px;
+  }
+
+  .nav-logo {
+    margin: 0 0 0 20px;
+  }
+
+  .nav-link-container {
+    display: flex;
+    display: -webkit-flex;
+  }
+
+  .nav-links {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .nav-links:hover::before {
+    background-color: var(--white);
+  }
+
+  /******* courasel *******/
+  .carousel-container {
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    height: 60vh;
+    min-height: 450px;
+  }
+
+  .carousel-buttons-container {
+    width: 10rem;
+    height: 80px;
+    justify-self: start;
+    -webkit-justify-self: start;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .carousel-buttons-container.mobile {
+    display: none;
+  }
+
+  .carousel-buttons-container.desktop {
+    display: flex;
+    display: -webkit-flex;
+  }
+
+  .hero-img-container {
+    height: 100%;
+  }
+
+  .hero-img {
+    position: relative;
+    display: none;
+    width: 50vw;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .hero-description-container {
+    padding: 50px;
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+
   .hero-header {
-    font-size: 35px;
+    font-size: 24px;
   }
 
   /******* about section ********/
   .about-section-container {
     flex-direction: row;
-    min-height: 267px;
+    -webkit-flex-direction: row;
+    height: 40vh;
+    min-height: 270px;
   }
 
   .about-text-container {
-    padding: 50px 40px;
+    padding: 50px;
     flex-basis: 120%;
-    min-width: 580px;
-    max-width: 580px;
+    -webkit-flex-basis: 120%;
+    justify-content: center;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    min-height: 270px;
   }
 
   .about-img {
-    min-width: 420px;
-    max-width: 420px;
-
-    height: 265px;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: left;
   }
 
   .about-img-light {
-    max-width: 440px;
+    background-position: center;
   }
 }
 
 /* responsive after screen width greater than 1440px */
 @media only screen and (min-width: 1441px) {
-  body {
-    max-width: 1440px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    position: relative;
-  }
-
   /******* navbar *******/
-
-  .navbar {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    z-index: 3;
-  }
-}
-
-/* responsive after screen height greater than 800px */
-@media only screen and (min-height: 901px) {
-  body {
-    max-width: 1440px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    margin: auto;
-    position: relative;
+  .nav-links {
+    font-size: 18px;
   }
 
-  /******* navbar *******/
-  .navbar {
-    background-color: black;
-    position: absolute;
-    min-width: 1440px;
+  /******** carousel ********/
+  .hero-img-container {
+    /* added to prevent divs from moving with enlarged images */
+    min-width: 50vw;
+    max-width: 50vw;
+  }
+
+  .hero-img {
+    background-size: cover;
+
     width: 100%;
-    top: 0;
-    z-index: 3;
+  }
+
+  .hero-description-container {
+    padding: 150px;
+  }
+
+  /******* about *******/
+
+  .about-text-container {
+    padding: 50px 100px;
   }
 }
