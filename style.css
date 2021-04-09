@@ -191,6 +191,7 @@ p {
 
 .hero-text {
   display: none;
+  height: 250px;
 }
 
 .hero-text.active {
@@ -264,7 +265,7 @@ p {
   }
 
   .hero-description-container {
-    padding: 100px;
+    padding: 80px;
   }
 
   .shop-now-button {
